@@ -9,7 +9,6 @@ class Weather(commands.Cog):
 
     @commands.command(name='tmbr', aliases=['weather', 'tempo'])
     async def metereologia(self, ctx, cidade):
-        import requests
 
         url = f"https://aerisweather1.p.rapidapi.com/observations/{cidade},br"
 
