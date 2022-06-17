@@ -1,7 +1,7 @@
 import discord
 import requests
 from discord.ext import commands
-
+from time import strftime
 class Cott(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -17,6 +17,7 @@ class Cott(commands.Cog):
             )
         embed.add_field(name='Valor em Dólares Americanos (USD)', value=f'U${quantia:.2f}', inline=False)
         embed.add_field(name='Valor em Reais Brasileiros (BRL)', value=f"R${valor*quantia:.2f}", inline=False)
+        embed.set_footer(text=f'Dados de {strftime("%d/%m/%Y || %H:%M")}')
         await ctx.send(embed=embed)
 
 def setup(bot):

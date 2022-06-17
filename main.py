@@ -3,7 +3,6 @@ from discord.ext import commands
 from os import listdir, system
 from accesskey import TOKEN
 
-
 bot = commands.Bot(">")
 
 for arquivo in listdir('./commands'):
