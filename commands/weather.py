@@ -1,5 +1,6 @@
 from discord.ext import commands
 import discord
+from pandas import value_counts
 import requests
 
 class Weather(commands.Cog):
@@ -21,12 +22,15 @@ class Weather(commands.Cog):
 
         embed_tempo = discord.Embed(
             title = f'Temperatura em {cidade.capitalize()}',
-            description = 'Veja o tempo da sua cidade'
+            description = 'Veja o tempo da sua cidade',
+            colour = 0xdbd10d
         )
         dados = response["response"]["ob"]
+
         embed_tempo.add_field(name='Temperatura', value=f"{dados['tempC']}°C", inline=True)
         embed_tempo.add_field(name='Umidade', value=f"{dados['humidity']}%", inline=True)
         embed_tempo.add_field(name='Velocidade dos ventos', value=f"{dados['windSpeedKPH']}km/h", inline=False)
+        embed_tempo.set_footer(name='Fonte: Aerisweather // Margem de erro: 1°C para mais ou para menos')
         await ctx.send(embed=embed_tempo)
 
 def setup(bot):

@@ -12,7 +12,8 @@ class Icon(commands.Cog):
         user_avatar = membicon.avatar_url
 
         embed_icon = discord.Embed(
-            title=f'Avatar de {membicon}'
+            title=f'Avatar de {membicon}',
+            colour=0x03fc14
         )
         embed_icon.set_image(url=user_avatar)
         await ctx.send(embed=embed_icon)

@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from .escolhas import Choice
+from .choices import Choice
 
 class Rockscissors(commands.Cog):
     def __init__(self, bot):
