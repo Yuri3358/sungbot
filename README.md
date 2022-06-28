@@ -28,4 +28,4 @@ rola um dado. Se quiser especificar a quantidade de faces de um dado passe como 
 
 <hr>
 
-
+Nota do autor: Para logar ao servidor, adicione um arquivo chamado accesskey.py no mesmo diretório que main.py. Do contrário não haverá ligação cliente-servidor
