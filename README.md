@@ -1,5 +1,9 @@
 <h1>Projeto Sungbot</h1>
 
+<h2>Conceito</h2>
+
+<p>O nome vem da concatenação das palavras **sung**lasses e bot, foi escrito em Python a fim de compreender melhor sobre a biblioteca Discord Py </p>
+
 <h2>Lista de módulos</h2>
 
 <h3>Calculator</h5>
@@ -32,7 +36,6 @@ Rola um dado. Se quiser especificar a quantidade de faces de um dado passe como 
 
 <h3>Whois</h5>
 <p>Dá ao utilizador informações relevantes sobre websites (data de criação, cidade e unidade federativa (quando houver)</p>
-
 <hr>
 
 Nota do autor: Para logar ao servidor, adicione um arquivo chamado accesskey.py no mesmo diretório que main.py. Do contrário não haverá ligação cliente-servidor
