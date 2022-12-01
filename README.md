@@ -2,7 +2,7 @@
 
 <h2>Conceito</h2>
 
-<p>O nome vem da concatenação das palavras **sung**lasses e bot, foi escrito em Python a fim de compreender melhor sobre a biblioteca Discord Py </p>
+<p>O nome vem da concatenação das palavras <strong>sung</strong>lasses e bot, foi escrito em Python a fim de compreender melhor sobre a biblioteca Discord Py </p>
 
 <h2>Lista de módulos</h2>
 
