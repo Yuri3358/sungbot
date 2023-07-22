@@ -10,9 +10,17 @@ class Plotter(commands.Cog):
 
     @discord.slash_command(description="Gera um gráfico em linha de uma função")
     async def plot(self, ctx, function):
-        x = linspace(0, 10, 30)
+        x = linspace(-10, 10, 50)
         y = eval(function)
         plt.plot(x, y)
+
+        plt.xlabel("X")
+        plt.ylabel("Y")
+        plt.axhline(0, color="black", linewidth=1.5)
+        plt.axvline(0, color="black", linewidth=1.5)
+        plt.xlim(-10, 10)
+        plt.ylim(-10, 10)
+
         plt.grid(True)
         plt.savefig("plot.png")
         plt.close()
