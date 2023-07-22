@@ -2,22 +2,33 @@ import discord
 from discord.ext import commands
 from .choices import Choice
 
-class Rockscissors(commands.Cog):
+class SelectBox(discord.ui.View): 
+    @discord.ui.select(
+        min_values=1,
+        max_values=1,
+        options=[
+            discord.SelectOption(
+                label="Pedra"
+            ),
+            discord.SelectOption(
+                label="Papel"
+            ),
+            discord.SelectOption(
+                label="Tesoura"
+            )
+        ]
+    )
+    async def callback(self, select, interaction): 
+        manager = Choice
+        outputs = manager.escolha(option=select.values[0])
+        await interaction.response.send_message(f"Eu escolhi: {outputs['bot']} \nVocê escolheu: {outputs['jogador']} \nResultado: {outputs['resultado']}")
+
+class Jokenpo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
-    @commands.command(nome='pedrapapel', aliases=['rc', 'ppt'])
-    async def rps(self, ctx, option):     
-        choice = Choice
-        valores = choice.escolha(option=option)
-
-        embed = discord.Embed(
-            title = 'Papel, pedra ou tesoura'
-        )
-        embed.add_field(name='Jogador', value=valores['jogador'])
-        embed.add_field(name='Bot', value=valores['bot'], inline=True)
-        embed.add_field(name='Resultado', value=valores['resultado'], inline=False)
-        await ctx.send(embed=embed)
+    @discord.slash_command()
+    async def jokenpo(self, ctx):
+        await ctx.respond("Pedra, papel ou tesoura?", view=SelectBox())
 
 def setup(bot):
-    bot.add_cog(Rockscissors(bot))
+    bot.add_cog(Jokenpo(bot))
