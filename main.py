@@ -1,6 +1,7 @@
 import discord
-from os import listdir
-from accesskey import TOKEN
+from os import listdir, environ
+from dotenv import load_dotenv
+load_dotenv()
 
 bot = discord.Bot()
 
@@ -12,4 +13,4 @@ for file in listdir('./commands'):
 async def on_ready():
     print(f'Logged as {bot.user}')
 
-bot.run(TOKEN) 
+bot.run(environ["TOKEN"]) 
