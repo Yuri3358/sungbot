@@ -6,9 +6,9 @@ class Choice(commands.Cog):
         self.bot = bot
            
     def escolha(option):
-        jogo = ['pedra', 'papel', 'tesoura']
+        jogo = ['Pedra', 'Papel', 'Tesoura']
         escolha_bot = choice(jogo)
-        resultado = 'undefined'
+        resultado = None
 
         if option not in jogo:
             f'{option} não é uma opção válida, tente outra vez'
@@ -17,10 +17,10 @@ class Choice(commands.Cog):
             if escolha_bot == option:
                 resultado = 'Empate!'
 
-            elif escolha_bot == 'tesoura' and option == 'papel' or escolha_bot == 'pedra' and option == 'tesoura' or escolha_bot == 'papel' and option == 'pedra':
+            elif escolha_bot == 'Tesoura' and option == 'Papel' or escolha_bot == 'Pedra' and option == 'Tesoura' or escolha_bot == 'Papel' and option == 'Pedra':
                 resultado = 'Derrota!'
 
-            elif escolha_bot == 'papel' and option == 'tesoura' or escolha_bot == 'tesoura' and option == 'pedra' or escolha_bot == 'pedra' and option == 'papel':
+            elif escolha_bot == 'Papel' and option == 'Tesoura' or escolha_bot == 'Tesoura' and option == 'Pedra' or escolha_bot == 'Pedra' and option == 'Papel':
                 resultado = 'Vitória!'
 
         output = {
