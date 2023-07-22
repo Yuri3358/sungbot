@@ -7,7 +7,7 @@ class Rolldice(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(aliases=['rnumber', 'randint', 'dice', 'roll', 'rolldice'])
+    @discord.slash_command(aliases=['rnumber', 'randint', 'dice', 'roll', 'rolldice'])
     async def dado(self, ctx, faces=6):
         msg = await ctx.send('Rolando o dado... :game_die:')
         await asyncio.sleep(2)
