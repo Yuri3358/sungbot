@@ -26,7 +26,8 @@ class SelectBox(discord.ui.View):
 class Jokenpo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    @discord.slash_command()
+        
+    @discord.slash_command(description="Jogue jokenpo tradicional")
     async def jokenpo(self, ctx):
         await ctx.respond("Pedra, papel ou tesoura?", view=SelectBox())
 

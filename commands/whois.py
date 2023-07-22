@@ -5,7 +5,8 @@ from whois import whois
 class Whois(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    @discord.slash_command()
+        
+    @discord.slash_command(description="Descubra informações de um domínio")
     async def whodomain(self, ctx, domain):
         target = whois(domain)
         embed = discord.Embed(

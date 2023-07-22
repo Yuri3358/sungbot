@@ -6,7 +6,7 @@ class Rolldice(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @discord.slash_command()
+    @discord.slash_command(description="Jogue um dado personalizado")
     async def roll(self, ctx, faces=6):
         face = randrange(1, int(faces)+1)
         await ctx.respond(f'O dado caiu no **{face}**') 

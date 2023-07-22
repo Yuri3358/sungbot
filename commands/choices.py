@@ -30,6 +30,5 @@ class Choice(commands.Cog):
         }
         return output
 
-
 def setup(bot):
     bot.add_cog(Choice(bot))
