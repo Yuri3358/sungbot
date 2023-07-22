@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 from os import remove
-from numpy import linspace
+from numpy import linspace, sin as sen, cos, tan
 from matplotlib import pyplot as plt
 
 class Plotter(commands.Cog):
