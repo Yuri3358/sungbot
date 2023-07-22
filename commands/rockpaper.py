@@ -20,8 +20,8 @@ class SelectBox(discord.ui.View):
     )
     async def callback(self, select, interaction): 
         manager = Choice
-        outputs = manager.escolha(option=select.values[0])
-        await interaction.response.send_message(f"Eu escolhi: {outputs['bot']} \nVocê escolheu: {outputs['jogador']} \nResultado: {outputs['resultado']}")
+        outputs = manager.choice(option=select.values[0])
+        await interaction.response.send_message(f"Eu escolhi: {outputs['bot']} \nVocê escolheu: {outputs['player']} \nResultado: {outputs['result']}")
 
 class Jokenpo(commands.Cog):
     def __init__(self, bot):

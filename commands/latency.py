@@ -6,7 +6,7 @@ class Ping(commands.Cog):
         self.bot = bot
 
     @discord.slash_command(name='ping')
-    async def latencia(self, ctx):
+    async def latency(self, ctx):
         ping = self.bot.latency*100
         await ctx.respond(content=f"Pong! **{ping:.2f}**ms")
 

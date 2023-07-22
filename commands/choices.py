@@ -5,28 +5,28 @@ class Choice(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
            
-    def escolha(option):
-        jogo = ['Pedra', 'Papel', 'Tesoura']
-        escolha_bot = choice(jogo)
-        resultado = None
+    def choice(option):
+        game = ['Pedra', 'Papel', 'Tesoura']
+        bot_choice = choice(game)
+        result = None
 
-        if option not in jogo:
-            f'{option} não é uma opção válida, tente outra vez'
+        if option not in game:
+            f'{option} não é uma opção válida.'
 
         else:
-            if escolha_bot == option:
-                resultado = 'Empate!'
+            if bot_choice == option:
+                result = 'Empate!'
 
-            elif escolha_bot == 'Tesoura' and option == 'Papel' or escolha_bot == 'Pedra' and option == 'Tesoura' or escolha_bot == 'Papel' and option == 'Pedra':
-                resultado = 'Derrota!'
+            elif bot_choice == 'Tesoura' and option == 'Papel' or bot_choice == 'Pedra' and option == 'Tesoura' or bot_choice == 'Papel' and option == 'Pedra':
+                result = 'Derrota!'
 
-            elif escolha_bot == 'Papel' and option == 'Tesoura' or escolha_bot == 'Tesoura' and option == 'Pedra' or escolha_bot == 'Pedra' and option == 'Papel':
-                resultado = 'Vitória!'
+            elif bot_choice == 'Papel' and option == 'Tesoura' or bot_choice == 'Tesoura' and option == 'Pedra' or bot_choice == 'Pedra' and option == 'Papel':
+                result = 'Vitória!'
 
         output = {
-            'bot': escolha_bot,
-            'jogador': str(option).capitalize(),
-            'resultado': resultado
+            'bot': bot_choice,
+            'player': str(option).capitalize(),
+            'result': result
         }
         return output
 
