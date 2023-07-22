@@ -35,7 +35,13 @@ Rola um dado. Se quiser especificar a quantidade de faces de um dado passe como 
 <hr>
 
 <h2>Dependências</h2>
-<p>[accesskey.py]: arquivo contendo o token de acesso ao cliente do seu bot.</p> 
+<h3>Arquivos</h3>
+<p>.env contendo o token de acesso ao seu bot.</p>
+<hr>
+<h3>Bibliotecas</h3>
+<p>python-dotenv</p>
+<p>python-whois</p>
+<p>pycord</p>
 <hr>
 
 Status: 🚧 Em construção 🚧
