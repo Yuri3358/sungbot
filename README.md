@@ -34,6 +34,10 @@ Rola um dado. Se quiser especificar a quantidade de faces de um dado passe como 
 <p>Dá ao utilizador informações relevantes sobre websites (data de criação, cidade e unidade federativa [quando houver]).</p>
 <hr>
 
+<h3>Plot</h3>
+<p>Gera um gráfico em linha dada uma função f(x), ex.:x*10, x*2</p>
+<hr>
+
 <h2>Dependências</h2>
 <h3>Arquivos</h3>
 <p>.env contendo o token de acesso ao seu bot.</p>
@@ -42,6 +46,7 @@ Rola um dado. Se quiser especificar a quantidade de faces de um dado passe como 
 <p>python-dotenv</p>
 <p>python-whois</p>
 <p>pycord</p>
+<p>matplotlib</p>
 <hr>
 
 Status: 🚧 Em construção 🚧
