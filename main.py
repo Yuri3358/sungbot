@@ -11,8 +11,7 @@ for file in listdir('./commands'):
 
 @bot.event
 async def on_ready():
-    activity = discord.Game(name="Servindo aos meus usuários")
-    await bot.change_presence(activity=activity)
+    discord.Activity(type=discord.ActivityType.listening, name="meus usuários")
     print(f'Logged as {bot.user}')
 
-bot.run(environ["TOKEN"]) 
+bot.run(environ["TOKEN"])

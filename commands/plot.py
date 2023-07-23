@@ -34,7 +34,8 @@ class Plotter(commands.Cog):
         plt.close()
 
         plot_embed = discord.Embed(
-            title=f"Gráfico da função f(x)=`{function}`"
+            title=f"Gráfico da função f(x)=`{function}`",
+            colour=discord.Colour.blue()
         )
         
         with open("plot.png", "rb") as file:
