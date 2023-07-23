@@ -9,8 +9,10 @@ class Plotter(commands.Cog):
         self.bot = bot
 
     @discord.slash_command(description="Gera um gráfico em linha de uma função")
-    async def plot(self, ctx, function):
-        x = linspace(-10, 10, 50)
+    async def plot(self, ctx, function, 
+                   highlight_x: discord.Option(float, "Ponto (n) a ser destacado em X, decimal sem vírgulas", required=False), 
+                   highlight_y: discord.Option(float, "Ponto (n) ser destacado em Y, decimal sem vírgulas", required=False)):
+        x = linspace(-100, 100, 200)
         y = eval(function)
         plt.plot(x, y)
 
@@ -18,10 +20,16 @@ class Plotter(commands.Cog):
         plt.ylabel("Y")
         plt.axhline(0, color="black", linewidth=1.5)
         plt.axvline(0, color="black", linewidth=1.5)
-        plt.xlim(-10, 10)
-        plt.ylim(-10, 10)
-
+        plt.xlim(-100, 100)
+        plt.ylim(-100, 100)
         plt.grid(True)
+
+        if highlight_x != None and highlight_y != None:
+            if highlight_x > 10 or highlight_y > 10:
+                highlight_x /= 10
+                highlight_y /= 10 
+                plt.scatter(highlight_x, highlight_y)
+        
         plt.savefig("plot.png")
         plt.close()
 
