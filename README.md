@@ -2,51 +2,62 @@
 
 <h2>Conceito</h2>
 
-<p>O nome vem da concatenação das palavras <strong>sung</strong>lasses e bot, o sungbot tem como finalidade estudar a criação de bots para o discord utilizando Python.</p>
+<p>O nome vem da concatenação das palavras <strong>sung</strong>lasses e bot, o sungbot serve como objeto de estudo para a criação de bots para o discord utilizando Python.</p>
+<p>A ideia da criação de um Discord bot surgiu em 2018, mas que foi concretizada somente dois anos depois ao estudar programação, sendo essa ideia meu motivo para aprender a programar.</p>
 
 <h2>Lista de módulos</h2>
 
 <h3>Calculator</h5>
-<p>Módulo referente ao comando calc, responsável por calcular o resultado de expressões matemáticas.</p>
+    <p>Módulo referente ao comando <code>/calc</code>, responsável por calcular o resultado de expressões matemáticas.</p>
+    <p>Forma de utilização: <code>/calc {expressão}</code></p>
 <hr>
 
 <h3>Currencyrates</h5>
-<p>Arquivo que contêm o comando dolar, que faz cálculos com a cotação atual da moeda ao par do real.</p>
+    <p>Arquivo que contêm o comando <code>/dolar</code>, que faz cálculos com a cotação atual da moeda ao par do real.</p>
+    <p>Forma de utilização: <code>/dolar [quantia]</code></p>
 <hr>
 
 <h3>Icon</h5>
-<p>Exibe, em forma de embed, o ícone do usuário mencionado (se nenhum é mencionado o alvo passa a ser o autor do comando).</p>
+    <p>Exibe em uma embed o ícone do usuário mencionado (se nenhum é especificado o alvo passa a ser o autor do comando).</p>
+    <p>Forma de utilização: <code>/icon [usuario]</code></p>
 <hr>
 
 <h3>Ping</h5>
-<p>Mostra em ms (milisegundos) o tempo de resposta da API, ou seja, quantos milisegundos levam para o bot responder o utilizador.</p>
+    <p>Mostra quantos milisegundos levam para o bot responder o usuário</p>
+    <p>Forma de utilização: <code>/ping</code></p>
 <hr>
 
 <h3>Rockpaper</h5>
-<p>Jogo simples de pedra, papel e tesoura.</p>
+    <p>Jogo simples de pedra, papel e tesoura.</p>
+    <p>Forma de utilização: <code>/jokenpo</code></p>
 <hr>
 
 <h3>Rolldice</h5>
-Rola um dado. Se quiser especificar a quantidade de faces de um dado passe como argumento (Obs.: por padrão é 6).
+    <p>Rola um dado cujo padrão de faces é 6</p>
+    <p>Forma de utilização: <code>/roll [faces]</code></p>
 <hr>
 
 <h3>Whois</h5>
-<p>Dá ao utilizador informações relevantes sobre websites (data de criação, cidade e unidade federativa [quando houver]).</p>
+    <p>Dá ao utilizador informações relevantes sobre websites (data de criação, cidade e estado [quando houver]).</p>
+    <p>Forma de utilização: <code>/whois {site}</code></p>
 <hr>
 
 <h3>Plot</h3>
-<p>Gera um gráfico em linha dada uma função f(x), ex.:x*10, x*2</p>
+    <p>Gera um gráfico em linha dada uma função f(x), ex.:x*10, x*2</p>
+    <p>Forma de utilização: <code>/plot {x} {y} [highlight_x] [highlight_y]</code></p>
 <hr>
 
+<h3>CEP</h3>
+    <p>Mostra informações sobre um CEP</p>
+    <p>Forma de utilização <code>/cepinfo {cep}</code></p>
+<hr>
 <h2>Dependências</h2>
-<h3>Arquivos</h3>
-<p>.env contendo o token de acesso ao seu bot.</p>
-<hr>
-<h3>Bibliotecas</h3>
-<p>python-dotenv</p>
-<p>python-whois</p>
-<p>pycord</p>
-<p>matplotlib</p>
-<hr>
-
-Status: 🚧 Em construção 🚧
+    <h3>Arquivos</h3>
+        <p>.env contendo o token de acesso ao seu bot.</p>
+    <hr>
+    <h3>Bibliotecas</h3>
+        <li>python-dotenv</li>
+        <li>python-whois</li>
+        <li>pycord</li>
+        <li>matplotlib</li>
+    <hr>
