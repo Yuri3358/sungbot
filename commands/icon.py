@@ -5,7 +5,7 @@ class Icon(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @discord.slash_command(description="Retorna a foto de perfil")
+    @discord.slash_command(name="icon", description="Retorna a foto de perfil")
     async def icon_profile(self, ctx, *, membicon : discord.User=None):
         if membicon is None:
             membicon = ctx.author
