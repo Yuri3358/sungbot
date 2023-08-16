@@ -1,0 +1,6 @@
+py-cord
+python-whois
+python-dotenv
+matplotlib
+numpy
+requests
