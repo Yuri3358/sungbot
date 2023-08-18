@@ -51,9 +51,14 @@
     <p>Mostra informações sobre um CEP</p>
     <p>Forma de utilização <code>/cepinfo {cep}</code></p>
 <hr>
+
+<h3>Img</h3>
+    <p>Retorna uma paginação de imagens obtidas a partir do Google.</p>
+    <p>Forma de utilização <code>/img {search}</code></p>
+<hr>
 <h2>Dependências</h2>
     <h3>Arquivos</h3>
-        <p>.env contendo o token de acesso ao seu bot.</p>
+        <p>.env contendo o token de acesso ao seu bot e da API do https://serapi.com</p>
     <hr>
     <h3>Bibliotecas</h3>
         <li>python-dotenv</li>
