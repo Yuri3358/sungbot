@@ -34,7 +34,6 @@ class Weather(commands.Cog):
         weather_embed.add_field(name="Probabilidade de Chuva", value=f"{weather_data['rain_prob']}%")
         weather_embed.set_footer(text="Dados fornecidos por https://tomorrow.io")
 
-        ctx.response.defer()
         await ctx.respond(embed=weather_embed)
 
 def setup(bot):
