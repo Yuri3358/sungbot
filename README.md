@@ -56,9 +56,17 @@
     <p>Retorna uma paginação de imagens obtidas a partir do Google.</p>
     <p>Forma de utilização <code>/img {search}</code></p>
 <hr>
+
+<h3>Weather</h3>
+    <p>Retorna algumas informações meteorológicas sobre o local especificado.</p>
+    <p>Forma de utilização <code>/weather {city}</code></p>
+
 <h2>Dependências</h2>
     <h3>Arquivos</h3>
-        <p>.env contendo o token de acesso ao seu bot e da API do https://serapi.com</p>
+        <p>.env contendo o token de acesso ao seu bot e das APIs utilizadas</p>
+        <h3>Lista de APIs utilizadas (com tokens obrigatórios)</h3>
+        <p><a href="https://serpapi.com/" target="_blank"></a>SerpApi</p>
+        <p><a href="https://tomorrow.io/" target="_blank"></a>Tomorrow.io</p>
     <hr>
     <h3>Bibliotecas</h3>
         <li>python-dotenv</li>
