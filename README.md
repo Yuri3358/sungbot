@@ -60,7 +60,7 @@
 <h3>Weather</h3>
     <p>Retorna algumas informações meteorológicas sobre o local especificado.</p>
     <p>Forma de utilização <code>/weather {city}</code></p>
-
+<hr>
 <h2>Dependências</h2>
     <h3>Arquivos</h3>
         <p>.env contendo o token de acesso ao seu bot e das APIs utilizadas</p>
