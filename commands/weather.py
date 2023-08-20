@@ -8,7 +8,7 @@ class Weather(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
-    @discord.slash_command(description="Mostra informações meterológicas sobre a cidade pesquisada")
+    @discord.slash_command(description="Mostra informações meteorológicas sobre a cidade pesquisada")
     async def weather(self, ctx, city):
         load_dotenv()
         header = {"accept": "application/json"}
