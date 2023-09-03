@@ -66,6 +66,10 @@
     <p>Retorna informações básicas sobre um usuário</p>
     <p>Forma de utilização <code>/userinfo {id | mention}</code></p>
 <hr>
+<h3>MAD (Modo de Autodestruição)<h3>
+    <p>Apaga todos os chats do servidor, somente o proprietário do bot pode utilizá-lo</p>
+    <p>Forma de utilização <code>/mad</code></p>
+<hr>
 <h2>Dependências</h2>
     <h3>Arquivos</h3>
         <p>.env contendo o token de acesso ao seu bot e das APIs utilizadas</p>

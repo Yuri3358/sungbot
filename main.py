@@ -1,4 +1,5 @@
 import discord
+from discord.ext import commands
 from os import listdir, environ
 from dotenv import load_dotenv
 load_dotenv()
@@ -13,5 +14,12 @@ for file in listdir('./commands'):
 async def on_ready():
     discord.Activity(type=discord.ActivityType.listening, name="meus usuários")
     print(f'Logged as {bot.user}')
+    
+@bot.event
+async def on_application_command_error(ctx, err):
+    if isinstance(err, commands.NotOwner):
+        await ctx.respond("Você não possui as permissões necessárias")
+    else:
+        raise err
 
 bot.run(environ["TOKEN"])
