@@ -3,7 +3,7 @@
 <h2>Conceito</h2>
 
 <p>O nome vem da concatenação das palavras <strong>sung</strong>lasses e bot, o sungbot serve como objeto de estudo para a criação de bots para o discord utilizando Python.</p>
-<p>A ideia da criação de um Discord bot surgiu em 2018, mas que foi concretizada somente dois anos depois ao estudar programação, sendo essa ideia meu motivo para aprender a programar.</p>
+<p>A ideia da criação de um bot no Discord surgiu em 2018, mas que foi concretizada somente dois anos depois ao estudar programação, sendo essa ideia meu motivo para aprender a programar.</p>
 
 <h2>Lista de módulos</h2>
 
@@ -68,7 +68,7 @@
 <hr>
 <h3>MAD (Modo de Autodestruição)</h3>
     <p>Apaga todos os chats do servidor, somente o proprietário do bot pode utilizá-lo</p>
-    <p>Forma de utilização <code>/mad</code></p>
+    <p>Forma de utilização <code>/mad {code}</code></p>
 <hr>
 <h2>Dependências</h2>
     <h3>Arquivos</h3>
