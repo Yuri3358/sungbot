@@ -4,3 +4,4 @@ python-dotenv
 matplotlib
 numpy
 requests
+firebase_admin
