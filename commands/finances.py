@@ -68,7 +68,7 @@ class Finances(commands.Cog):
 
     @currency.command(name="dashboard", description="Informações sobre a moeda corrente")
     async def get_currency_info(self, ctx):
-        info_embed = discord.Embed(title="Informações monetárias")
+        info_embed = discord.Embed(title="Informações Monetárias")
         info_embed.add_field(name="Símbolo", value=get_currency_symbol())
         info_embed.add_field(name="Inflação atual", value=f"{get_inflation()}%")
         info_embed.add_field(name="Diária atual", value=f"{get_currency_symbol()}{get_current_wage():.2f}")
