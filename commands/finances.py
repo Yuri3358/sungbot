@@ -3,6 +3,8 @@ from discord.ext import commands
 from discord.ext.commands import BucketType, cooldown
 from commands.database.currencyops import *
 
+currency_symbol = "K$"
+
 class Finances(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -13,13 +15,13 @@ class Finances(commands.Cog):
     async def register_user(self, ctx):
         create_account(ctx.author.id)
         await ctx.respond(f"Criar conta para <@{ctx.author.id}>")
-    
+
     @currency.command(name="wealth")
     async def user_credits(self, ctx):
         user_wealth = get_user_wealth(ctx.author.id)
         bank_embed = discord.Embed(title="Informações Bancárias")
         bank_embed.add_field(name="Titular", value=f"<@{ctx.author.id}>")
-        bank_embed.add_field(name="Saldo em conta", value=f"${user_wealth:.2f}")
+        bank_embed.add_field(name="Saldo em conta", value=f"{currency_symbol}{user_wealth:.2f}")
         
         await ctx.respond(embed=bank_embed)
     
@@ -30,8 +32,8 @@ class Finances(commands.Cog):
         user_credits = get_user_wealth(ctx.author.id)
 
         job_embed = discord.Embed(title="Trabalho realizado!")
-        job_embed.add_field(name="Valor recebido", value=f"${work_data:.2f}")
-        job_embed.add_field(name="Saldo da conta", value=f"${user_credits:.2f}")
+        job_embed.add_field(name="Valor recebido", value=f"{currency_symbol}{work_data:.2f}")
+        job_embed.add_field(name="Saldo da conta", value=f"{currency_symbol}{user_credits:.2f}")
 
         await ctx.respond(embed=job_embed)
 
@@ -49,7 +51,7 @@ class Finances(commands.Cog):
             pix_embed = discord.Embed(title="Transferência realizada!")
             pix_embed.add_field(name="Rementente", value=f"<@{ctx.author.id}>", inline=False)
             pix_embed.add_field(name="Destinatário", value=f"<@{to.id}>", inline=False)
-            pix_embed.add_field(name="Quantia", value=f"{amount}")
+            pix_embed.add_field(name="Quantia", value=f"{currency_symbol}{amount}")
             await ctx.respond(embed=pix_embed)
         else: 
             await ctx.respond("Saldo insuficiente para a transação!!")
@@ -58,8 +60,21 @@ class Finances(commands.Cog):
     @commands.is_owner()
     async def set_inflation(self, ctx, tax):
         inflation(tax)
-        await ctx.defer()
-        await ctx.respond(f"Inflação ajustada para {tax}% \nDiária ajustada para ${get_current_wage():.2f}")
+        inflation_output = discord.Embed(title="Inflação ajustada!!")
+        inflation_output.add_field(name="Inflação atual", value=f"{get_inflation()}%")
+        inflation_output.add_field(name="Diária atual", value=f"{currency_symbol}{get_current_wage():.2f}")
         
+        await ctx.defer()
+        await ctx.respond(embed=inflation_output)
+
+    @currency.command(name="dashboard")
+    async def get_currency_info(self, ctx):
+        info_embed = discord.Embed(title="Informações monetárias")
+        info_embed.add_field(name="Símbolo", value=currency_symbol)
+        info_embed.add_field(name="Inflação atual", value=f"{get_inflation()}%")
+        info_embed.add_field(name="Diária atual", value=f"{currency_symbol}{get_current_wage():.2f}")
+        
+        await ctx.respond(embed=info_embed)
+
 def setup(bot):
     bot.add_cog(Finances(bot))
