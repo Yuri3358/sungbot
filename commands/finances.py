@@ -11,12 +11,12 @@ class Finances(commands.Cog):
         
     currency = discord.SlashCommandGroup(name="finances", description="Sistema monetário")
 
-    @currency.command(name="register")
+    @currency.command(name="register", description="Abra sua conta bancária")
     async def register_user(self, ctx):
         create_account(ctx.author.id)
         await ctx.respond(f"Criar conta para <@{ctx.author.id}>")
 
-    @currency.command(name="wealth")
+    @currency.command(name="wealth", description="Consulte sua conta bancária")
     async def user_credits(self, ctx):
         user_wealth = get_user_wealth(ctx.author.id)
         bank_embed = discord.Embed(title="Informações Bancárias")
@@ -25,7 +25,7 @@ class Finances(commands.Cog):
         
         await ctx.respond(embed=bank_embed)
     
-    @currency.command(name="work")
+    @currency.command(name="work", description="Trabalhe para ganhar dinheiro, a diária é corrigida pela inflação")
     @cooldown(1, 86400, BucketType.user)
     async def working(self, ctx):
         work_data = work(str(ctx.author.id))
@@ -44,7 +44,7 @@ class Finances(commands.Cog):
         else:
             raise error
 
-    @currency.command(name="pix")
+    @currency.command(name="pix", description="Faça transferências para outros membros")
     async def transfer(self, ctx, amount, to: discord.Member):
         if float(amount) <= get_user_wealth(ctx.author.id):
             transfer_money(str(ctx.author.id), target_account=str(to.id), amount=amount)
@@ -56,7 +56,7 @@ class Finances(commands.Cog):
         else: 
             await ctx.respond("Saldo insuficiente para a transação!!")
 
-    @currency.command(name="inflation")
+    @currency.command(name="inflation", description="Ajuste a inflação da moeda, o salário também é ajustado")
     @commands.is_owner()
     async def set_inflation(self, ctx, tax):
         inflation(tax)
@@ -67,7 +67,7 @@ class Finances(commands.Cog):
         await ctx.defer()
         await ctx.respond(embed=inflation_output)
 
-    @currency.command(name="dashboard")
+    @currency.command(name="dashboard", description="Informações sobre a moeda corrente")
     async def get_currency_info(self, ctx):
         info_embed = discord.Embed(title="Informações monetárias")
         info_embed.add_field(name="Símbolo", value=currency_symbol)
