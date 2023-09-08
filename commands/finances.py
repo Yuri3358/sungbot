@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 from discord.ext.commands import BucketType, cooldown
-from commands.database.currencyops import *
+from commands.database.currencycore import *
 
 currency_symbol = "K$"
 
