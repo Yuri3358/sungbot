@@ -3,8 +3,6 @@ from discord.ext import commands
 from discord.ext.commands import BucketType, cooldown
 from commands.database.currencycore import *
 
-currency_symbol = "$"
-
 class Finances(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -21,7 +19,7 @@ class Finances(commands.Cog):
         user_wealth = get_user_wealth(ctx.author.id)
         bank_embed = discord.Embed(title="Informações Bancárias")
         bank_embed.add_field(name="Titular", value=f"<@{ctx.author.id}>")
-        bank_embed.add_field(name="Saldo em conta", value=f"{currency_symbol}{user_wealth:.2f}")
+        bank_embed.add_field(name="Saldo em conta", value=f"{get_currency_symbol()}{user_wealth:.2f}")
         
         await ctx.respond(embed=bank_embed)
     
@@ -32,8 +30,8 @@ class Finances(commands.Cog):
         user_credits = get_user_wealth(ctx.author.id)
 
         job_embed = discord.Embed(title="Trabalho realizado!")
-        job_embed.add_field(name="Valor recebido", value=f"{currency_symbol}{work_data:.2f}")
-        job_embed.add_field(name="Saldo da conta", value=f"{currency_symbol}{user_credits:.2f}")
+        job_embed.add_field(name="Valor recebido", value=f"{get_currency_symbol()}{work_data:.2f}")
+        job_embed.add_field(name="Saldo da conta", value=f"{get_currency_symbol()}{user_credits:.2f}")
 
         await ctx.respond(embed=job_embed)
 
@@ -51,7 +49,7 @@ class Finances(commands.Cog):
             pix_embed = discord.Embed(title="Transferência realizada!")
             pix_embed.add_field(name="Rementente", value=f"<@{ctx.author.id}>", inline=False)
             pix_embed.add_field(name="Destinatário", value=f"<@{to.id}>", inline=False)
-            pix_embed.add_field(name="Quantia", value=f"{currency_symbol}{amount}")
+            pix_embed.add_field(name="Quantia", value=f"{get_currency_symbol()}{amount}")
             
             await ctx.respond(embed=pix_embed)
         else: 
@@ -63,7 +61,7 @@ class Finances(commands.Cog):
         inflation(tax)
         inflation_output = discord.Embed(title="Inflação ajustada!!")
         inflation_output.add_field(name="Inflação atual", value=f"{get_inflation()}%")
-        inflation_output.add_field(name="Diária atual", value=f"{currency_symbol}{get_current_wage():.2f}")
+        inflation_output.add_field(name="Diária atual", value=f"{get_currency_symbol()}{get_current_wage():.2f}")
         
         await ctx.defer()
         await ctx.respond(embed=inflation_output)
@@ -71,11 +69,18 @@ class Finances(commands.Cog):
     @currency.command(name="dashboard", description="Informações sobre a moeda corrente")
     async def get_currency_info(self, ctx):
         info_embed = discord.Embed(title="Informações monetárias")
-        info_embed.add_field(name="Símbolo", value=currency_symbol)
+        info_embed.add_field(name="Símbolo", value=get_currency_symbol())
         info_embed.add_field(name="Inflação atual", value=f"{get_inflation()}%")
-        info_embed.add_field(name="Diária atual", value=f"{currency_symbol}{get_current_wage():.2f}")
+        info_embed.add_field(name="Diária atual", value=f"{get_currency_symbol()}{get_current_wage():.2f}")
         
         await ctx.respond(embed=info_embed)
+    
+    @currency.command(name="symbol", description="Altere o símbolo da moeda")
+    @commands.is_owner()
+    async def set_currency_symbol(self, ctx, new_symbol):
+        set_currency_symbol(new_symbol=new_symbol)
+        await ctx.respond(f"Perfeito! Agora o símbolo da sua moeda será {get_currency_symbol()}")
+
 
 def setup(bot):
     bot.add_cog(Finances(bot))

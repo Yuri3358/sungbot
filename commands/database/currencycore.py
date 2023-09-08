@@ -77,3 +77,12 @@ def inflation(tax):
             "inflation": float(tax),
             "wage": get_current_wage() - get_current_wage()*get_inflation() / 100
         })
+
+def set_currency_symbol(new_symbol):
+    settings_ref.document("currencydata").update({
+        "symbol": new_symbol
+    })
+    
+def get_currency_symbol():
+    symbol = settings_ref.document("currencydata").get().to_dict()["symbol"]
+    return symbol
