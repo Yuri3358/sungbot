@@ -1,3 +1,4 @@
 accesskey.py
 __pycache__
 .env
+.firebase_credentials.env
