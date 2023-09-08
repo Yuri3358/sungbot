@@ -3,7 +3,7 @@ from discord.ext import commands
 from discord.ext.commands import BucketType, cooldown
 from commands.database.currencycore import *
 
-currency_symbol = "K$"
+currency_symbol = "$"
 
 class Finances(commands.Cog):
     def __init__(self, bot):
@@ -52,6 +52,7 @@ class Finances(commands.Cog):
             pix_embed.add_field(name="Rementente", value=f"<@{ctx.author.id}>", inline=False)
             pix_embed.add_field(name="Destinatário", value=f"<@{to.id}>", inline=False)
             pix_embed.add_field(name="Quantia", value=f"{currency_symbol}{amount}")
+            
             await ctx.respond(embed=pix_embed)
         else: 
             await ctx.respond("Saldo insuficiente para a transação!!")
