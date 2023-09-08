@@ -51,11 +51,11 @@ def get_inflation():
 def inflation(tax):
     if float(tax) != 0:
         settings_ref.document("currencydata").update({
-            "inflation": float(tax),
+            "inflation": get_inflation() + float(tax),
             "wage": get_current_wage() + get_current_wage()*float(tax) / 100
         })
     elif float(tax) == 0: 
         settings_ref.document("currencydata").update({
-            "inflation": tax,
+            "inflation": float(tax),
             "wage": get_current_wage() - get_current_wage()*get_inflation() / 100
         })
