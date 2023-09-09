@@ -15,3 +15,4 @@
     <li><a target="_blank" href="https://github.com/Yuri3358/sungbot/wiki/Matemática">Matemática</a></li>
     <li><a target="_blank" href="https://github.com/Yuri3358/sungbot/wiki/Servidor">Servidor</a></li>
 </ul>
+<p>Além dos comandos, o guia de dependências foi movido para a seção <a target="_blank" href="https://github.com/Yuri3358/sungbot/wiki#dependências">Dependências</a></p>
