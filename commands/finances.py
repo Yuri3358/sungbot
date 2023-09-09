@@ -9,31 +9,34 @@ class Finances(commands.Cog):
         
     currency = discord.SlashCommandGroup(name="finances", description="Sistema monetário")
 
-    @currency.command(name="register", description="Abra sua conta bancária")
-    async def register_user(self, ctx):
-        create_account(ctx.author.id)
-        await ctx.respond(f"Criar conta para <@{ctx.author.id}>")
-
     @currency.command(name="wealth", description="Consulte sua conta bancária")
     async def user_credits(self, ctx):
-        user_wealth = get_user_wealth(ctx.author.id)
-        bank_embed = discord.Embed(title="Informações Bancárias")
-        bank_embed.add_field(name="Titular", value=f"<@{ctx.author.id}>")
-        bank_embed.add_field(name="Saldo em conta", value=f"{get_currency_symbol()}{user_wealth:.2f}")
-        
-        await ctx.respond(embed=bank_embed)
+        if create_account(ctx.author.id) == 1:
+            user_wealth = get_user_wealth(ctx.author.id)
+            bank_embed = discord.Embed(title="Informações Bancárias")
+            bank_embed.add_field(name="Titular", value=f"<@{ctx.author.id}>")
+            bank_embed.add_field(name="Saldo em conta", value=f"{get_currency_symbol()}{user_wealth:.2f}")
+            
+            await ctx.respond(embed=bank_embed)
+        else:
+            await ctx.respond("Conta criada, tente novamente!")
     
     @currency.command(name="work", description="Trabalhe para ganhar dinheiro, a diária é corrigida pela inflação")
     @cooldown(1, 86400, BucketType.user)
     async def working(self, ctx):
-        work_data = work(str(ctx.author.id))
-        user_credits = get_user_wealth(ctx.author.id)
 
-        job_embed = discord.Embed(title="Trabalho realizado!")
-        job_embed.add_field(name="Valor recebido", value=f"{get_currency_symbol()}{work_data:.2f}")
-        job_embed.add_field(name="Saldo da conta", value=f"{get_currency_symbol()}{user_credits:.2f}")
+        if create_account(ctx.author.id) == 1:
+            work_data = work(str(ctx.author.id))
+            user_credits = get_user_wealth(ctx.author.id)
 
-        await ctx.respond(embed=job_embed)
+            job_embed = discord.Embed(title="Trabalho realizado!")
+            job_embed.add_field(name="Valor recebido", value=f"{get_currency_symbol()}{work_data:.2f}")
+            job_embed.add_field(name="Saldo da conta", value=f"{get_currency_symbol()}{user_credits:.2f}")
+
+            await ctx.respond(embed=job_embed)
+        
+        else: 
+            await ctx.respond("Conta criada, tente novamente em 24h!")
 
     @working.error
     async def on_application_command_error(self, ctx, error):
@@ -44,16 +47,19 @@ class Finances(commands.Cog):
 
     @currency.command(name="pix", description="Faça transferências para outros membros")
     async def transfer(self, ctx, amount, to: discord.Member):
-        if float(amount) <= get_user_wealth(ctx.author.id):
-            transfer_money(str(ctx.author.id), target_account=str(to.id), amount=amount)
-            pix_embed = discord.Embed(title="Transferência realizada!")
-            pix_embed.add_field(name="Rementente", value=f"<@{ctx.author.id}>", inline=False)
-            pix_embed.add_field(name="Destinatário", value=f"<@{to.id}>", inline=False)
-            pix_embed.add_field(name="Quantia", value=f"{get_currency_symbol()}{amount}")
-            
-            await ctx.respond(embed=pix_embed)
-        else: 
-            await ctx.respond("Saldo insuficiente para a transação!!")
+        if create_account(ctx.author.id) == 1:
+            if float(amount) <= get_user_wealth(ctx.author.id):
+                transfer_money(str(ctx.author.id), target_account=str(to.id), amount=amount)
+                pix_embed = discord.Embed(title="Transferência realizada!")
+                pix_embed.add_field(name="Rementente", value=f"<@{ctx.author.id}>", inline=False)
+                pix_embed.add_field(name="Destinatário", value=f"<@{to.id}>", inline=False)
+                pix_embed.add_field(name="Quantia", value=f"{get_currency_symbol()}{amount}")
+                
+                await ctx.respond(embed=pix_embed)
+            else: 
+                await ctx.respond("Saldo insuficiente para a transação!!")
+        else:
+            await ctx.respond("Conta criada! Tente novamente!")
 
     @currency.command(name="inflation", description="Ajuste a inflação da moeda, o salário também é ajustado")
     @commands.is_owner()

@@ -27,17 +27,22 @@ db = firestore.client()
 users_ref = db.collection("users")
 settings_ref = db.collection("settings")
 
-users_list = []
-for user in users_ref.get():
-    users_list.append(user.id)
 
 def create_account(user):
-    if user not in users_list:
+    doc_list = users_ref.get() #lista de documentos da coleção Users (usuários)
+    users_list = []
+
+    for user_doc in doc_list:
+        users_list.append(user_doc.id) #o array será preenchido com o nome de todos os documentos (IDs)
+
+    if str(user) not in users_list: #conta não existente, portanto será criada.
         users_ref.document(str(user)).set({
             "credit": 0
         })
-    else: 
-        return "Conta não criada!"
+        return 0
+    
+    else: #conta já existente, retornará 1
+        return 1
     
 def get_user_wealth(user):
     amount = users_ref.document(str(user)).get().to_dict()["credit"]
