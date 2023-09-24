@@ -16,3 +16,7 @@
     <li><a target="_blank" href="https://github.com/Yuri3358/sungbot/wiki/Servidor">Servidor</a></li>
 </ul>
 <p>Além dos comandos, a lista de dependências foi movido para a seção <a target="_blank" href="https://github.com/Yuri3358/sungbot/wiki#dependências">Dependências</a></p>
+
+<h2>Problemas conhecidos</h2>
+<h3>Unknown Interactions</h3>
+<p>No código, as `Unknown Interactions` são causadas pelo excesso de callbacks de uma só vez. Como consequência, há a necessidade de chamar o mesmo comando mais de uma vez. Na próxima atualização, pretendo refatorar o núcleo `currencycore.py` para reduzir as chamadas.</p>
