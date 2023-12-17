@@ -11,6 +11,7 @@ class GoogleSearch(commands.Cog):
 
     @discord.slash_command(description="Pesquise imagens no Google Images")
     async def img(self, ctx, search):
+        await ctx.response.defer()
         load_dotenv()
         request = requests.get(f"https://serpapi.com/search.json?engine=google_images&q={search}&api_key={environ['SERPAPI_TOKEN']}").json()
         
@@ -30,7 +31,6 @@ class GoogleSearch(commands.Cog):
 
         pag = Paginator(results_pages)
         
-        await ctx.response.defer()
         await pag.respond(ctx.interaction)
 
 def setup(bot):

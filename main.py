@@ -6,7 +6,7 @@ load_dotenv()
 bot = discord.Bot()
 
 for file in listdir('./commands'): 
-    if file.endswith('.py') and not file.startswith("finances"):
+    if file.endswith('.py'):
         bot.load_extension(f'commands.{file[:-3]}')
 
 @bot.event
