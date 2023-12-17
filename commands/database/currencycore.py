@@ -53,13 +53,13 @@ def set_currency_symbol(new_symbol, guild_id):
 def inflation(tax, guild_id):
     if float(tax) != 0:
         settings_ref.document(str(guild_id)).update({
-            "inflation": get_inflation() + float(tax),
+            "inflation": get_inflation(guild_id) + float(tax),
             "wage": get_current_wage(guild_id) + get_current_wage(guild_id)*float(tax) / 100
         })
     elif float(tax) == 0: 
         settings_ref.document(str(guild_id)).update({
             "inflation": float(tax),
-            "wage": get_current_wage(guild_id) - get_current_wage(guild_id)*get_inflation() / 100
+            "wage": get_current_wage(guild_id) - get_current_wage(guild_id)*get_inflation(guild_id) / 100
         })
 
 def work(user, guild_id):
