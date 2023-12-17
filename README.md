@@ -19,4 +19,3 @@
 
 <h2>Problemas conhecidos</h2>
 <h3>Unknown Interactions</h3>
-<p>No código, as `Unknown Interactions` são causadas pelo erro de timing no momento em que o comando é processado. Esta questão será resolvida na próxima atualização</p>
