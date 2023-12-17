@@ -16,6 +16,3 @@
     <li><a target="_blank" href="https://github.com/Yuri3358/sungbot/wiki/Servidor">Servidor</a></li>
 </ul>
 <p>Além dos comandos, a lista de dependências foi movido para a seção <a target="_blank" href="https://github.com/Yuri3358/sungbot/wiki#dependências">Dependências</a></p>
-
-<h2>Problemas conhecidos</h2>
-<h3>Unknown Interactions</h3>
