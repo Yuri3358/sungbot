@@ -28,6 +28,7 @@ users_ref = db.collection("users")
 settings_ref = db.collection("settings")
 
 
+# Setters
 def create_account(user):
     doc_list = users_ref.get() #lista de documentos da coleção Users (usuários)
     users_list = []
@@ -44,19 +45,27 @@ def create_account(user):
     else: #conta já existente, retornará 1
         return 1
     
-def get_user_wealth(user):
-    amount = users_ref.document(str(user)).get().to_dict()["credit"]
-    return float(amount)
-
-def get_current_wage():
-    wage = settings_ref.document("currencydata").get().to_dict()["wage"]
-    return float(wage)
-
-def work(user):
-    users_ref.document(str(user)).update({
-        "credit": get_user_wealth(str(user)) + get_current_wage()
+def set_currency_symbol(new_symbol, guild_id):
+    settings_ref.document(str(guild_id)).update({
+        "symbol": new_symbol
     })
-    return get_current_wage()
+
+def inflation(tax, guild_id):
+    if float(tax) != 0:
+        settings_ref.document(str(guild_id)).update({
+            "inflation": get_inflation() + float(tax),
+            "wage": get_current_wage(guild_id) + get_current_wage(guild_id)*float(tax) / 100
+        })
+    elif float(tax) == 0: 
+        settings_ref.document(str(guild_id)).update({
+            "inflation": float(tax),
+            "wage": get_current_wage(guild_id) - get_current_wage(guild_id)*get_inflation() / 100
+        })
+
+def work(user, guild_id):
+    users_ref.document(str(user)).update({
+        "credit": get_user_wealth(str(user)) + get_current_wage(guild_id)
+    })
 
 def transfer_money(user, target_account, amount):
     users_ref.document(user).update({
@@ -67,27 +76,26 @@ def transfer_money(user, target_account, amount):
         "credit": get_user_wealth(target_account) + float(amount)
     })
 
-def get_inflation():
-    current_inflation = settings_ref.document("currencydata").get().to_dict()["inflation"]
+def create_settings(guild_id):
+    settings_ref.document(str(guild_id)).set({
+        "inflation": 0,
+        "wage": 100,
+        "symbol": "$"
+    })
+
+# Getters
+def get_user_wealth(user):
+    amount = users_ref.document(str(user)).get().to_dict()["credit"]
+    return float(amount)
+
+def get_current_wage(guild_id):
+    wage = settings_ref.document(str(guild_id)).get().to_dict()["wage"]
+    return float(wage)
+
+def get_inflation(guild_id):
+    current_inflation = settings_ref.document(str(guild_id)).get().to_dict()["inflation"]
     return float(current_inflation)
 
-def inflation(tax):
-    if float(tax) != 0:
-        settings_ref.document("currencydata").update({
-            "inflation": get_inflation() + float(tax),
-            "wage": get_current_wage() + get_current_wage()*float(tax) / 100
-        })
-    elif float(tax) == 0: 
-        settings_ref.document("currencydata").update({
-            "inflation": float(tax),
-            "wage": get_current_wage() - get_current_wage()*get_inflation() / 100
-        })
-
-def set_currency_symbol(new_symbol):
-    settings_ref.document("currencydata").update({
-        "symbol": new_symbol
-    })
-    
-def get_currency_symbol():
-    symbol = settings_ref.document("currencydata").get().to_dict()["symbol"]
+def get_currency_symbol(guild_id):
+    symbol = settings_ref.document(str(guild_id)).get().to_dict()["symbol"]
     return symbol
