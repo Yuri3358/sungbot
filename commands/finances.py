@@ -11,8 +11,8 @@ class Finances(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
-        create_settings(guild.id)   
-        
+        create_settings(guild.id)
+
     @currency.command(name="wealth", description="Consulte sua conta bancária")
     async def user_credits(self, ctx):
         await ctx.defer()
@@ -44,7 +44,8 @@ class Finances(commands.Cog):
             await ctx.respond(embed=job_embed)
         
         else: 
-            await ctx.respond("Conta criada, tente novamente em 24h!")
+            await ctx.respond("Conta criada, tente novamente")
+            ctx.command.reset_cooldown(ctx)
 
     @working.error
     async def on_application_command_error(self, ctx, error):
