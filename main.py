@@ -5,9 +5,9 @@ load_dotenv()
 
 bot = discord.Bot()
 
-for file in listdir('./commands'): 
-    if file.endswith('.py'):
-        bot.load_extension(f'commands.{file[:-3]}')
+for file in listdir("./commands"): 
+    if file.endswith(".py"):
+        bot.load_extension(f"commands.{file[:-3]}")
 
 @bot.event
 async def on_ready():
