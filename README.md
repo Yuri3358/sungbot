@@ -19,4 +19,4 @@
 
 <h2>Problemas conhecidos</h2>
 <h3>Unknown Interactions</h3>
-<p>No código, as `Unknown Interactions` são causadas pelo excesso de callbacks de uma só vez. Como consequência, há a necessidade de chamar o mesmo comando mais de uma vez. Na próxima atualização, pretendo refatorar o núcleo `currencycore.py` para reduzir as chamadas.</p>
+<p>No código, as `Unknown Interactions` são causadas pelo erro de timing no momento em que o comando é processado. Esta questão será resolvida na próxima atualização</p>
