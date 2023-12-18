@@ -38,8 +38,8 @@ class Finances(commands.Cog):
             
             job_embed = discord.Embed(title="Trabalho realizado!")
 
-            job_embed.add_field(name="Valor recebido", value=f"{wage:.2f}")
-            job_embed.add_field(name="Saldo da conta", value=f"{user_credits:.2f}")
+            job_embed.add_field(name="Valor recebido", value=f"{get_currency_symbol(ctx.guild.id)}{wage:.2f}")
+            job_embed.add_field(name="Saldo da conta", value=f"{get_currency_symbol(ctx.guild.id)}{user_credits:.2f}")
 
             await ctx.respond(embed=job_embed)
         
