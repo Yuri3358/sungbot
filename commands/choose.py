@@ -8,7 +8,6 @@ class Chooser(commands.Cog):
 
     @discord.slash_command(name="choose", description="Peça para eu escolher uma opção dentre várias! Separe entre vírgulas!")
     async def chooser(self, ctx, elements):
-
         options = elements.split(", ")
         chose_option = choice(options)
         await ctx.respond(f"Eu escolho {chose_option}!")
