@@ -13,7 +13,7 @@ class ExchangeRates(commands.Cog):
         value = float(bid['USDBRL']['bid'])
         
         embed = discord.Embed(
-            title='Cotação do Dólar Americano frente ao Real Brasileiro',
+            title='Cotação do Dólar Americano em relação ao Real Brasileiro',
             color=0x03f0fc 
         )
         embed.add_field(name='Valor em Dólares Americanos (USD)', value=f"U${float(amount):.2f}", inline=False)
