@@ -4,7 +4,7 @@ from firebase_admin import firestore
 from dotenv import load_dotenv
 from os import environ 
 
-load_dotenv(dotenv_path=".firebase_credentials.env")
+load_dotenv()
 
 certificate = {
     "type": "service_account",
